@@ -17,10 +17,16 @@
  */
 
 #include <postgres.h>
+#include <catalog/catversion.h>
 #include <lib/stringinfo.h>
 #include <mb/pg_wchar.h>
-#include <parser/keywords.h>
 #include <utils/memutils.h>
+
+#if CATALOG_VERSION_NO >= 201603211
+    #include <common/keywords.h>
+#else
+    #include <parser/keywords.h>
+#endif
 
 #include "stringutil.h"
 
